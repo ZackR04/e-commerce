@@ -84,16 +84,19 @@ class DetailProductWidget extends StatelessWidget {
             ),
             Text(
               detailProduct.title!,
-              style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18),
+              style: const TextStyle(
+                  fontWeight: FontWeight.bold, fontSize: 18, color: warnaElite),
             ),
             const SizedBox(
               height: 10,
             ),
-            Text('Rp.${detailProduct.price!}'),
+            Text('\$ ${detailProduct.price!}',
+                style: const TextStyle(fontSize: 12, color: warnaMedium)),
             const SizedBox(
               height: 10,
             ),
-            Text(detailProduct.description!),
+            Text(detailProduct.description!,
+                style: const TextStyle(color: warnaPremier)),
             const SizedBox(
               height: 10,
             ),
@@ -117,11 +120,11 @@ class DetailProductWidget extends StatelessWidget {
           children: [
             ClipRRect(
               borderRadius: BorderRadius.circular(40),
-              child: OutlinedButton(
+              child: ElevatedButton(
+                style: ElevatedButton.styleFrom(backgroundColor: warnaTersier),
                 onPressed: () {},
                 child: const Text(
-                  "ClipRRect",
-                  style: TextStyle(color: warnaElite),
+                  "",
                 ),
               ),
             ),
@@ -136,8 +139,8 @@ class DetailProductWidget extends StatelessWidget {
       color: warnaTersier,
       child: Container(
         padding: const EdgeInsets.all(20),
-        decoration: BoxDecoration(
-            borderRadius: const BorderRadius.only(
+        decoration: const BoxDecoration(
+            borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(30), topRight: Radius.circular(30)),
             color: warnaSekunder),
         child: Center(
@@ -148,7 +151,7 @@ class DetailProductWidget extends StatelessWidget {
               style: ElevatedButton.styleFrom(
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(15),
-                      side: BorderSide(color: warnaElite)),
+                      side: const BorderSide(color: warnaElite)),
                   elevation: 0.0,
                   backgroundColor: Colors.transparent),
               onPressed: () {},
