@@ -8,28 +8,28 @@ class DetailProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detail Produk'),
-      ),
-      body: SingleChildScrollView(
-        child: FutureBuilder<http.Response>(
-            future: http
-                .get(Uri.parse("https://fakestoreapi.com/products/$productId")),
-            builder: (context, snapshot) {
-              if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(
-                  child: CircularProgressIndicator(),
-                );
-              }
-              if (snapshot.hasData) {
-                final detailProduct =
-                    detailProductModelFromJson(snapshot.data!.body);
-                return DetailProductWidget(
-                  detailProduct: detailProduct,
-                );
-              }
-              return Container();
-            }),
+      body: Container(
+        color: Colors.white,
+        child: SafeArea(
+          child: FutureBuilder<http.Response>(
+              future: http.get(
+                  Uri.parse("https://fakestoreapi.com/products/$productId")),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(
+                    child: CircularProgressIndicator(),
+                  );
+                }
+                if (snapshot.hasData) {
+                  final detailProduct =
+                      detailProductModelFromJson(snapshot.data!.body);
+                  return DetailProductWidget(
+                    detailProduct: detailProduct,
+                  );
+                }
+                return Container();
+              }),
+        ),
       ),
     );
   }
