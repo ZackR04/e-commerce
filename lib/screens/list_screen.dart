@@ -14,8 +14,21 @@ class _ListScreenState extends State<ListScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: const Color.fromARGB(162, 255, 115, 0),
-        title: const Text('Fashion & Lifestyle'),
+        elevation: 0.0,
+        backgroundColor: warnaSekunder,
+        title: const Text(
+          'Fashion & Lifestyle',
+          style: TextStyle(fontSize: 15, color: warnaElite),
+        ),
+        leading: GestureDetector(
+          onTap: () {
+            Navigator.of(context).pop();
+          },
+          child: const Icon(
+            Icons.arrow_back_ios,
+            color: warnaElite,
+          ),
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
           currentIndex: bottomNavBar,
@@ -29,7 +42,12 @@ class _ListScreenState extends State<ListScreen> {
                 icon: Icon(Icons.grid_3x3), label: 'GridView'),
             BottomNavigationBarItem(icon: Icon(Icons.list), label: 'ListView')
           ]),
-      body: (bottomNavBar == 0) ? const GridProduct() : const ListProduct(),
+      body: (bottomNavBar == 0)
+          ? Container(
+              padding: const EdgeInsets.only(left: 10, right: 10),
+              color: warnaBasic,
+              child: const GridProduct())
+          : const ListProduct(),
     );
   }
 }
@@ -76,6 +94,9 @@ class GridProduct extends StatelessWidget {
           if (snapshot.hasData) {
             final products = productModelFromJson(snapshot.data.body);
             return GridView.count(
+              padding: const EdgeInsets.symmetric(vertical: 20),
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
               crossAxisCount: 2,
               children: products.map((e) => ProductWidget(product: e)).toList(),
             );

@@ -15,38 +15,52 @@ class ProductWidget extends StatelessWidget {
                 builder: (context) =>
                     DetailProductScreen(productId: product.id!)));
       },
-      child: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ClipRRect(
+      child: Container(
+        decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
-          child: Container(
-            // color: Colors.grey,
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Hero(
-                    tag: product.id!,
-                    child: SizedBox(
-                        height: 100,
-                        width: double.infinity,
-                        child: Image.network(product.image!))),
-                Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Column(
-                      children: [
-                        Text(
-                          product.title!,
-                          style: TextStyle(
-                              fontSize: 12, fontWeight: FontWeight.bold),
-                        ),
-                        Text("Rp ${product.price!}",
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold))
-                      ],
-                    ))
-              ],
+          color: Colors.white,
+        ),
+        padding: const EdgeInsets.all(8.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Expanded(
+              child: Hero(
+                  tag: product.id!,
+                  child: SizedBox(
+                      width: double.infinity,
+                      child: Image.network(product.image!))),
             ),
-          ),
+            const SizedBox(
+              height: 15,
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
+              child: Text(
+                product.title!,
+                style: const TextStyle(fontSize: 12, color: warnaElite),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10, right: 10, bottom: 5),
+              child: Text('\$ ${product.price!}',
+                  style: const TextStyle(
+                      fontSize: 10,
+                      fontWeight: FontWeight.bold,
+                      color: warnaMedium)),
+            )
+            // Expanded(
+            //   child: Padding(
+            //       padding: const EdgeInsets.all(8.0),
+            //       child: Column(
+            //         crossAxisAlignment: CrossAxisAlignment.center,
+            //         children: [
+
+            //         ],
+            //       )
+            //     ),
+            // )
+          ],
         ),
       ),
     );
