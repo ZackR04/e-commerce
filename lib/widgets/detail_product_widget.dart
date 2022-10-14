@@ -59,8 +59,15 @@ class DetailProductWidget extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: const Icon(Icons.star)),
+                    icon: const Icon(
+                      Icons.star,
+                      color: Colors.yellow,
+                    )),
               ),
+            ),
+            Padding(
+              padding: const EdgeInsets.only(right: 20),
+              child: Text('${detailProduct.rating!.rate}'),
             )
           ],
         ),
