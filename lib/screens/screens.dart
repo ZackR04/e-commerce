@@ -1,4 +1,5 @@
 import 'package:ecommerce/models/models.dart';
+import 'package:ecommerce/utilities/utilities.dart';
 import 'package:ecommerce/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
