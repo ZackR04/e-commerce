@@ -6,4 +6,4 @@ import 'package:flutter/material.dart';
 part 'lifecycle_widget.dart';
 part 'product_widget.dart';
 part 'detail_product_widget.dart';
-part 'gradient_widget.dart';
+// part 'gradient_widget.dart';

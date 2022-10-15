@@ -16,7 +16,7 @@ class DetailProductWidget extends StatelessWidget {
           const SizedBox(
             height: 10,
           ),
-          _detailProduct(),
+          _detailProduct(context),
           _actionButton(),
           _addToCart(),
         ],
@@ -59,23 +59,19 @@ class DetailProductWidget extends StatelessWidget {
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    icon: const Icon(
-                      Icons.star,
-                      color: Colors.yellow,
+                    icon: Image.asset(
+                      'assets/images/cartc.png',
                     )),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(right: 20),
-              child: Text('${detailProduct.rating!.rate}'),
-            )
           ],
         ),
       ],
     );
   }
+  //zakiah rezeki s lubis meika karuno
 
-  Widget _detailProduct() {
+  Widget _detailProduct(BuildContext context) {
     return Expanded(
       child: Container(
         padding: const EdgeInsets.symmetric(horizontal: 20),
@@ -89,21 +85,46 @@ class DetailProductWidget extends StatelessWidget {
             const SizedBox(
               height: 20,
             ),
-            Text(
-              detailProduct.title!,
-              style: const TextStyle(
-                  fontWeight: FontWeight.bold, fontSize: 18, color: warnaElite),
+            Row(
+              children: [
+                Text(
+                  '\$ ${detailProduct.price!}',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: warnaElite),
+                ),
+                Expanded(
+                  child: Align(
+                    alignment: Alignment.centerRight,
+                    child: IconButton(
+                        onPressed: () {
+                          Navigator.of(context).pop();
+                        },
+                        icon: const Icon(
+                          Icons.star,
+                          color: Colors.yellow,
+                        )),
+                  ),
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(right: 20),
+                  child: Text('${detailProduct.rating!.rate}'),
+                )
+              ],
             ),
             const SizedBox(
               height: 10,
             ),
-            Text('\$ ${detailProduct.price!}',
-                style: const TextStyle(fontSize: 12, color: warnaMedium)),
+            Text(detailProduct.title!,
+                style: const TextStyle(fontSize: 15, color: warnaPremier)),
             const SizedBox(
               height: 10,
             ),
             Text(detailProduct.description!,
-                style: const TextStyle(color: warnaPremier)),
+                style: const TextStyle(
+                  color: warnaMedium,
+                )),
             const SizedBox(
               height: 10,
             ),
