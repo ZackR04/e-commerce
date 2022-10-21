@@ -24,7 +24,7 @@ class _ListScreenState extends State<ListScreen> {
                 ScaffoldMessenger.of(context).showSnackBar(
                     SnackBar(content: Text('Kamu Mendapatkan $body')));
               },
-              child: Text('Ok'),
+              child: const Text('Ok'),
             ),
           ],
         );
@@ -38,7 +38,7 @@ class _ListScreenState extends State<ListScreen> {
         "Untuk kamu yang berulang tahun, kami beri promo diskon 50% untuk produk ini yaa",
         "4");
     ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Notif akan muncul setelah 5 detik")));
+        const SnackBar(content: Text("Notif akan muncul setelah 5 detik")));
   }
 
   void onDidReceiveNotificationResponse(
@@ -47,13 +47,10 @@ class _ListScreenState extends State<ListScreen> {
     if (notificationResponse.payload != null) {
       debugPrint('notification payload: $payload');
     }
-    await Navigator.push(
-        context,
-        MaterialPageRoute<void>(
-          builder: ((context) => DetailProductScreen(
-                productId: int.parse(payload!),
-              )),
-        ));
+    BlocProvider.of<ProductDetailBloc>(context)
+        .add(FetchProductDetail(int.parse(payload!)));
+    await Navigator.push(context,
+        MaterialPageRoute(builder: (context) => const DetailProductScreen()));
     // await Navigator.push(
     //   context,
     //   MaterialPageRoute<void>(builder: (context) => SecondScreen(payload)),
@@ -132,7 +129,7 @@ class ListProduct extends StatelessWidget {
       }
     }, builder: (context, state) {
       if (state is ProductIsLoading) {
-        return Center(
+        return const Center(
           child: CircularProgressIndicator(),
         );
       }
@@ -163,7 +160,7 @@ class GridProduct extends StatelessWidget {
       },
       builder: (context, state) {
         if (state is ProductIsLoading) {
-          return Center(child: CircularProgressIndicator());
+          return const Center(child: CircularProgressIndicator());
         }
         if (state is ProductIsSuccess) {
           return GridView.count(

@@ -9,11 +9,12 @@ class ProductWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
+        BlocProvider.of<ProductDetailBloc>(context)
+            .add(FetchProductDetail(product.id!));
         Navigator.push(
             context,
             MaterialPageRoute(
-                builder: (context) =>
-                    DetailProductScreen(productId: product.id!)));
+                builder: (context) => const DetailProductScreen()));
       },
       child: Container(
         decoration: BoxDecoration(

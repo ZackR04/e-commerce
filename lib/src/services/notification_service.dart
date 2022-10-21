@@ -9,7 +9,7 @@ class NotificationService {
       Function(NotificationResponse)? onDidReceiveNotificationResponse) {
     //TODO: Init Android
     final AndroidInitializationSettings androidSettings =
-        AndroidInitializationSettings(appIcon);
+        const AndroidInitializationSettings(appIcon);
 
     //TODO: Init IOS
     final DarwinInitializationSettings iosSettings =
@@ -43,7 +43,8 @@ class NotificationService {
         const AndroidNotificationDetails(channelId, 'Belajar Salt',
             playSound: true);
 
-    DarwinNotificationDetails iosNotifDetail = DarwinNotificationDetails();
+    DarwinNotificationDetails iosNotifDetail =
+        const DarwinNotificationDetails();
 
     await localNotifications.show(12345, title, message,
         NotificationDetails(android: androidNotifDetail, iOS: iosNotifDetail),
@@ -56,13 +57,14 @@ class NotificationService {
         const AndroidNotificationDetails(channelId, 'Belajar Salt',
             playSound: true);
 
-    DarwinNotificationDetails iosNotifDetail = DarwinNotificationDetails();
+    DarwinNotificationDetails iosNotifDetail =
+        const DarwinNotificationDetails();
 
     await localNotifications.zonedSchedule(
         12345,
         title,
         message,
-        tz.TZDateTime.now(tz.local).add(Duration(seconds: 5)),
+        tz.TZDateTime.now(tz.local).add(const Duration(seconds: 5)),
         NotificationDetails(android: androidNotifDetail, iOS: iosNotifDetail),
         uiLocalNotificationDateInterpretation:
             UILocalNotificationDateInterpretation.absoluteTime,
