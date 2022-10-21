@@ -13,3 +13,4 @@ import 'package:shared_preferences/shared_preferences.dart';
 part 'splash_screen.dart';
 part 'list_screen.dart';
 part 'detail_product_screen.dart';
+part 'login_screen.dart';

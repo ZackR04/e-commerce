@@ -12,6 +12,9 @@ class App extends StatelessWidget {
       providers: [
         BlocProvider(
           create: (context) => ProductBloc(),
+        ),
+        BlocProvider(
+          create: (context) => ProductDetailBloc(),
         )
       ],
       child: const MaterialApp(
